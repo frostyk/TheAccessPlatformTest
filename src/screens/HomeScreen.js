@@ -3,6 +3,8 @@ import {SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {connect} from 'react-redux';
 import {Divider, SearchBar} from 'react-native-elements';
 import Colors from 'react-native/Libraries/NewAppScreen/components/Colors';
+import Autocomplete from '../components/Autocomplete';
+import {getVisiblePlaces} from '../redux/selectors/places';
 
 class HomeScreen extends React.Component {
   state = {
@@ -13,40 +15,31 @@ class HomeScreen extends React.Component {
     this.setState({search});
   };
 
+  onPlaceClick = place => {
+    this.updateSearch('');
+  };
+
   render() {
     const {search} = this.state;
     return (
       <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <SearchBar
-            placeholder="Type Country or City..."
-            onChangeText={this.updateSearch}
-            value={search}
-            lightTheme={true}
-            round={true}
-          />
-        </ScrollView>
+        <Autocomplete
+          data={getVisiblePlaces(this.props.places, search)}
+          updateSearch={this.updateSearch}
+          value={search}
+          onItemClick={this.onPlaceClick}
+          itemIcon={'room'}
+          placeholder={'Type Country or City...'}
+        />
       </SafeAreaView>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
-
 const mapStateToProps = state => {
   return {
     users: state.users,
+    places: state.places,
   };
 };
 
