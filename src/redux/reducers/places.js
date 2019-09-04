@@ -1,22 +1,7 @@
 import {SET_PLACES} from '../types/types';
+import places from '../../__fixtures__/places';
 
-const placesReducerInitialState = [
-  {
-    id: 1,
-    region: 'London',
-    country: 'Great Britain',
-  },
-  {
-    id: 2,
-    region: 'Lviv',
-    country: 'Ukraine',
-  },
-  {
-    id: 3,
-    region: 'Kiev',
-    country: 'Ukraine',
-  },
-];
+const placesReducerInitialState = places;
 
 const placesReducer = (state = placesReducerInitialState, action) => {
   switch (action.type) {
