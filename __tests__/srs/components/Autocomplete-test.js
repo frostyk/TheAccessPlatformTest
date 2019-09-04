@@ -11,9 +11,9 @@ it('renders correctly', () => {
   const tree = renderer.create(
     <Autocomplete
       data={getVisiblePlaces(places, '')}
-      updateSearch={() => {}}
+      updateSearch={jest.fn()}
       value={'search'}
-      onItemClick={() => {}}
+      onItemClick={jest.fn()}
       itemIcon={'room'}
       placeholder={'Type Country or City...'}
     />,
