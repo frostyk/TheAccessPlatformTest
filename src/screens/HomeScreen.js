@@ -1,15 +1,26 @@
-import React from 'react';
-import {SafeAreaView} from 'react-native';
-import Header from 'react-native/Libraries/NewAppScreen/components/Header';
+import React, {Fragment} from 'react';
+import {SafeAreaView, Text} from 'react-native';
+import {connect} from 'react-redux';
 
 class HomeScreen extends React.Component {
   render() {
     return (
       <SafeAreaView>
-        <Header />
+        {this.props.users.map((user, index) => (
+          <Fragment key={index}>
+            <Text>Name: {user.name}</Text>
+            <Text>Age: {user.age}</Text>
+          </Fragment>
+        ))}
       </SafeAreaView>
     );
   }
 }
 
-export default HomeScreen;
+const mapStateToProps = state => {
+  return {
+    users: state.users,
+  };
+};
+
+export default connect(mapStateToProps)(HomeScreen);
