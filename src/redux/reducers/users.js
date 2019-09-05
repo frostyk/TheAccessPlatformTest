@@ -1,11 +1,14 @@
 import {SET_USERS} from '../types/types';
 
-const usersReducerInitialState = [];
+const usersReducerInitialState = {
+  users: [],
+  selectedUser: {},
+};
 
 const usersReducer = (state = usersReducerInitialState, action) => {
   switch (action.type) {
     case SET_USERS:
-      return action.users;
+      return {...state, users: action.users};
     default:
       return state;
   }

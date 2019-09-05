@@ -12,7 +12,7 @@ const UsersList = props => (
         <Card
           title={`Ambassadors (${props.location.country.name}, ${
             props.location.region
-          })`}>
+          })`} titleStyle={{fontSize: 16}}>
           {props.data.map(user => (
             <ListItem
               key={user.id}
@@ -32,6 +32,7 @@ const UsersList = props => (
               subtitleStyle={{color: 'white'}}
               containerStyle={{marginBottom: 15, borderRadius: 10}}
               subtitle={user.university.name}
+              onPress={() => props.onPress(user)}
               chevronColor="white"
               chevron
             />

@@ -7,8 +7,13 @@ import UsersList from '../components/UsersList';
 import {startFetchingUsers} from '../redux/actions/users';
 import {selectUsers} from '../redux/selectors/users';
 import {setSearchCriteria, setSearchValue} from '../redux/actions/search';
+import {NavigationActions} from 'react-navigation';
 
 export class HomeScreen extends React.Component {
+  componentDidMount() {
+    this.props.dispatch(startFetchingUsers());
+  }
+
   updateSearch = search => {
     this.props.dispatch(setSearchValue(search));
   };
@@ -17,10 +22,14 @@ export class HomeScreen extends React.Component {
     this.props.dispatch(setSearchValue(''));
     this.props.dispatch(setSearchCriteria(place));
   };
-
-  componentDidMount() {
-    this.props.dispatch(startFetchingUsers());
-  }
+  onUserPress = user => {
+    const navigateAction = NavigationActions.navigate({
+      routeName: 'Message',
+      params: {},
+      action: NavigationActions.navigate({routeName: 'Message'}),
+    });
+    this.props.navigation.dispatch(navigateAction);
+  };
 
   render() {
     const {value} = this.props.search;
@@ -37,6 +46,7 @@ export class HomeScreen extends React.Component {
         <UsersList
           location={this.props.search.criteria}
           data={this.props.users}
+          onPress={this.onUserPress}
         />
       </SafeAreaView>
     );
@@ -45,7 +55,7 @@ export class HomeScreen extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    users: selectUsers(state.users, state.search.criteria),
+    users: selectUsers(state.users.users, state.search.criteria),
     places: state.places,
     search: state.search,
   };
