@@ -1,7 +1,8 @@
-import React, {Component, Fragment} from 'react';
-import {SafeAreaView, ScrollView, StyleSheet, Text} from 'react-native';
+import React, {Fragment} from 'react';
+import {ScrollView, StyleSheet} from 'react-native';
 import {ListItem, SearchBar} from 'react-native-elements';
 import Colors from 'react-native/Libraries/NewAppScreen/components/Colors';
+import FadeInView from './FadeInView';
 
 const Autocomplete = props => (
   <Fragment>
@@ -13,22 +14,24 @@ const Autocomplete = props => (
       round={true}
     />
     {props.data.length > 0 && (
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={styles.scrollView}>
-        {props.data.map(place => {
-          return (
-            <ListItem
-              key={place.country.id}
-              title={place.country.name}
-              subtitle={place.region}
-              leftIcon={{name: props.itemIcon}}
-              bottomDivider={true}
-              onPress={() => props.onItemClick(place)}
-            />
-          );
-        })}
-      </ScrollView>
+      <FadeInView>
+        <ScrollView
+          contentInsetAdjustmentBehavior="automatic"
+          style={styles.scrollView}>
+          {props.data.map(place => {
+            return (
+              <ListItem
+                key={place.country.id}
+                title={place.country.name}
+                subtitle={place.region}
+                leftIcon={{name: props.itemIcon}}
+                bottomDivider={true}
+                onPress={() => props.onItemClick(place)}
+              />
+            );
+          })}
+        </ScrollView>
+      </FadeInView>
     )}
   </Fragment>
 );

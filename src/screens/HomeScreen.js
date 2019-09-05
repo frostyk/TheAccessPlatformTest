@@ -34,7 +34,10 @@ export class HomeScreen extends React.Component {
           itemIcon={'room'}
           placeholder={'Type Country or City...'}
         />
-        <UsersList data={this.props.users} />
+        <UsersList
+          location={this.props.search.criteria}
+          data={this.props.users}
+        />
       </SafeAreaView>
     );
   }
