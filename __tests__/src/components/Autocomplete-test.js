@@ -1,23 +1,32 @@
 import 'react-native';
 import React from 'react';
-
-import renderer from 'react-test-renderer';
+import {shallow} from 'enzyme';
 import Autocomplete from '../../../src/components/Autocomplete';
-import {getVisiblePlaces} from '../../../src/redux/selectors/places';
 import places from '../../../src/__fixtures__/places';
 
-it('renders correctly', () => {
-  const tree = renderer
-    .create(
-      <Autocomplete
-        data={getVisiblePlaces(places, '')}
-        updateSearch={jest.fn()}
-        value={'search'}
-        onItemClick={jest.fn()}
-        itemIcon={'room'}
-        placeholder={'Type Country or City...'}
-      />,
-    )
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+it('should render Autocomplete with values', () => {
+  const wrapper = shallow(
+    <Autocomplete
+      data={places}
+      updateSearch={jest.fn()}
+      value={''}
+      onItemClick={jest.fn()}
+      itemIcon={'room'}
+      placeholder={'Type Country or City...'}
+    />,
+  );
+  expect(wrapper).toMatchSnapshot();
+});
+it('should render Autocomplete with empty array', () => {
+  const wrapper = shallow(
+    <Autocomplete
+      data={[]}
+      updateSearch={jest.fn()}
+      value={''}
+      onItemClick={jest.fn()}
+      itemIcon={'room'}
+      placeholder={'Type Country or City...'}
+    />,
+  );
+  expect(wrapper).toMatchSnapshot();
 });
