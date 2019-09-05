@@ -1,4 +1,4 @@
-import {SET_USERS} from '../types/types';
+import {SET_USER, SET_USERS} from '../types/types';
 import axios from 'axios';
 import {parsePlaces} from '../../util/places';
 import {setPlaces} from './places';
@@ -7,6 +7,12 @@ export const setUsers = (users = []) => {
   return {
     type: SET_USERS,
     users,
+  };
+};
+export const setUser = (user = {}) => {
+  return {
+    type: SET_USER,
+    user,
   };
 };
 
