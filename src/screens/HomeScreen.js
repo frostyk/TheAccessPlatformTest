@@ -1,13 +1,11 @@
 import React from 'react';
-import {SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView} from 'react-native';
 import {connect} from 'react-redux';
-import {Divider, SearchBar} from 'react-native-elements';
-import Colors from 'react-native/Libraries/NewAppScreen/components/Colors';
 import Autocomplete from '../components/Autocomplete';
 import {getVisiblePlaces} from '../redux/selectors/places';
 import UsersList from '../components/UsersList';
 
-class HomeScreen extends React.Component {
+export class HomeScreen extends React.Component {
   state = {
     search: '',
   };
@@ -32,7 +30,7 @@ class HomeScreen extends React.Component {
           itemIcon={'room'}
           placeholder={'Type Country or City...'}
         />
-        <UsersList data={this.props.users} />
+        <UsersList data={this.props.users}/>
       </SafeAreaView>
     );
   }
