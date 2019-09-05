@@ -1,11 +1,11 @@
-import React, {Component, Fragment} from 'react';
+import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {ListItem} from 'react-native-elements';
+import {Card, ListItem} from 'react-native-elements';
 import TouchableScale from 'react-native-touchable-scale'; // https://github.com/kohver/react-native-touchable-scale
 import LinearGradient from 'react-native-linear-gradient'; // Only if no expo
 
 const UsersList = props => (
-  <View style={styles.listContainer}>
+  <Card title="Ambassadors">
     {props.data.map(user => (
       <ListItem
         key={user.id}
@@ -29,7 +29,7 @@ const UsersList = props => (
         chevron
       />
     ))}
-  </View>
+  </Card>
 );
 
 const styles = StyleSheet.create({
