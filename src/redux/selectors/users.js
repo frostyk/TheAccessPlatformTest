@@ -1,4 +1,12 @@
-const selectUsers = (users, criteria) => {
+export const selectUsers = (users, criteria) => {
+  if (
+    !criteria ||
+    !criteria.region ||
+    !criteria.country ||
+    !criteria.country.name
+  ) {
+    return [];
+  }
   return users.filter(
     user =>
       user.region.startsWith(criteria.region) ||
