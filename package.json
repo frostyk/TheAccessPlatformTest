@@ -4,11 +4,14 @@
   "private": true,
   "scripts": {
     "start": "react-native start",
-    "test": "jest",
+    "test": "jest --config=jest.config.json",
     "lint": "eslint ."
   },
   "dependencies": {
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
     "react": "16.8.6",
+    "react-dom": "^16.9.0",
     "react-native": "0.60.5",
     "react-native-elements": "^1.1.0",
     "react-native-gesture-handler": "^1.4.1",
@@ -33,13 +36,5 @@
     "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.56.0",
     "react-test-renderer": "16.8.6"
-  },
-  "jest": {
-    "preset": "react-native",
-    "setupFiles": ["./node_modules/react-native-gesture-handler/jestSetup.js"],
-    "moduleNameMapper": { "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/assetsTransformer.js", "\\.(css|less)$": "<rootDir>/assetsTransformer.js" },
-    "transformIgnorePatterns": [
-      "node_modules/(?!((jest-)?react-native|react-clone-referenced-element|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|sentry-expo|native-base))"
-    ]
   }
 }
