@@ -1,7 +1,6 @@
 import {SET_USERS} from '../types/types';
-import users from '../../__fixtures__/users';
 
-const usersReducerInitialState = users;
+const usersReducerInitialState = [];
 
 const usersReducer = (state = usersReducerInitialState, action) => {
   switch (action.type) {

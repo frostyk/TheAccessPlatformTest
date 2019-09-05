@@ -1,7 +1,6 @@
 import {SET_PLACES} from '../types/types';
-import places from '../../__fixtures__/places';
 
-const placesReducerInitialState = places;
+const placesReducerInitialState = [];
 
 const placesReducer = (state = placesReducerInitialState, action) => {
   switch (action.type) {
