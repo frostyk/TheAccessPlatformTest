@@ -12,22 +12,24 @@ const Autocomplete = props => (
       lightTheme={true}
       round={true}
     />
-    <ScrollView
-      contentInsetAdjustmentBehavior="automatic"
-      style={styles.scrollView}>
-      {props.data.map(place => {
-        return (
-          <ListItem
-            key={place.id}
-            title={place.country}
-            subtitle={place.region}
-            leftIcon={{name: props.itemIcon}}
-            bottomDivider={true}
-            onPress={() => props.onItemClick(place)}
-          />
-        );
-      })}
-    </ScrollView>
+    {props.data.length > 0 && (
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic"
+        style={styles.scrollView}>
+        {props.data.map(place => {
+          return (
+            <ListItem
+              key={place.id}
+              title={place.country}
+              subtitle={place.region}
+              leftIcon={{name: props.itemIcon}}
+              bottomDivider={true}
+              onPress={() => props.onItemClick(place)}
+            />
+          );
+        })}
+      </ScrollView>
+    )}
   </Fragment>
 );
 
