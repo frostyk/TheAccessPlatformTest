@@ -8,7 +8,7 @@ export const getVisiblePlaces = (places, searchString) => {
       place.region
         .toLowerCase()
         .startsWith(searchString.toLowerCase(loweredSearchString)) ||
-      place.country
+      place.country.name
         .toLowerCase()
         .startsWith(searchString.toLowerCase(loweredSearchString))
     );

@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import Autocomplete from '../components/Autocomplete';
 import {getVisiblePlaces} from '../redux/selectors/places';
 import UsersList from '../components/UsersList';
+import {startFetchingUsers} from '../redux/actions/users';
 
 export class HomeScreen extends React.Component {
   state = {
@@ -18,6 +19,10 @@ export class HomeScreen extends React.Component {
     this.updateSearch('');
   };
 
+  componentDidMount() {
+    this.props.startFetchingUsers();
+  }
+
   render() {
     const {search} = this.state;
     return (
@@ -30,7 +35,7 @@ export class HomeScreen extends React.Component {
           itemIcon={'room'}
           placeholder={'Type Country or City...'}
         />
-        <UsersList data={this.props.users}/>
+        <UsersList data={this.props.users} />
       </SafeAreaView>
     );
   }
@@ -42,5 +47,13 @@ const mapStateToProps = state => {
     places: state.places,
   };
 };
+const mapDispatchToProps = dispatch => {
+  return {
+    startFetchingUsers: () => dispatch(startFetchingUsers()),
+  };
+};
 
-export default connect(mapStateToProps)(HomeScreen);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(HomeScreen);

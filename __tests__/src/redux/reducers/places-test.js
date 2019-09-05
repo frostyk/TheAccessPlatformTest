@@ -1,4 +1,4 @@
-import {SET_PLACES} from '../../../../src/redux/types/types';
+import {SET_PLACES, SET_REGIONS} from '../../../../src/redux/types/types';
 import places from '../../../../src/__fixtures__/places';
 import placesReducer from '../../../../src/redux/reducers/places';
 

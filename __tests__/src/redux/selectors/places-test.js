@@ -4,7 +4,7 @@ import places from '../../../../src/__fixtures__/places';
 it('should return countries by search string', () => {
   const searchString = 'ukra';
   const result = getVisiblePlaces(places, searchString);
-  expect(result).toEqual([places[1], places[2]]);
+  expect(result).toEqual([ places[2]]);
 });
 
 it('should return empty array if string is empty or less then 4', () => {

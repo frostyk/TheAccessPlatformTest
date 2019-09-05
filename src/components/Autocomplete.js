@@ -19,8 +19,8 @@ const Autocomplete = props => (
         {props.data.map(place => {
           return (
             <ListItem
-              key={place.id}
-              title={place.country}
+              key={place.country.id}
+              title={place.country.name}
               subtitle={place.region}
               leftIcon={{name: props.itemIcon}}
               bottomDivider={true}
