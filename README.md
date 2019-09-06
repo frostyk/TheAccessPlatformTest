@@ -1,6 +1,8 @@
 # TheAccessPlatformTest
 To launch the app run <code>react-native run-ios</code> or <code>react-native run-android</code> in the main dir.
 
+![alt text](https://imgur.com/Yny7drA)
+
 # Questions #
 
 <ul>
