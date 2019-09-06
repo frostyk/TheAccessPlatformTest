@@ -3,7 +3,7 @@ export const getVisiblePlaces = (places, searchString) => {
     return [];
   }
   const loweredSearchString = searchString.toLowerCase();
-  return places.filter(place => {
+  const placesWithRegions = places.filter(place => {
     return (
       place.region
         .toLowerCase()
@@ -13,4 +13,13 @@ export const getVisiblePlaces = (places, searchString) => {
         .startsWith(searchString.toLowerCase(loweredSearchString))
     );
   });
+  if (placesWithRegions.length > 0) {
+    placesWithRegions.unshift({
+      region: '',
+      country: {
+        name: placesWithRegions[0].country.name,
+      },
+    });
+  }
+  return placesWithRegions;
 };

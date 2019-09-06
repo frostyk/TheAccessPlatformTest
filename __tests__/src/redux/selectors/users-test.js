@@ -15,5 +15,14 @@ it('should return selected users', () => {
     country: {name: 'Ukrai'},
   };
   const result = selectUsers(users, criteria);
+  expect(result).toEqual([users[0], users[1]]);
+});
+
+it('should return selected users by country', () => {
+  const criteria = {
+    region: '',
+    country: {name: 'United'},
+  };
+  const result = selectUsers(users, criteria);
   expect(result).toEqual(users);
 });
