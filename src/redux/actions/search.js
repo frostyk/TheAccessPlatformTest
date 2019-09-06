@@ -1,4 +1,8 @@
-import {SET_SEARCH_CRITERIA, SET_SEARCH_VALUE} from '../types/types';
+import {
+  SET_SEARCH_CRITERIA,
+  SET_SEARCH_IS_LOADING,
+  SET_SEARCH_VALUE,
+} from '../types/types';
 
 export const setSearchValue = (value = '') => {
   return {
@@ -15,7 +19,7 @@ export const setSearchCriteria = (criteria = {region: '', country: {}}) => {
 };
 export const setSearchIsLoading = (isLoading = false) => {
   return {
-    type: SET_SEARCH_CRITERIA,
+    type: SET_SEARCH_IS_LOADING,
     isLoading,
   };
 };

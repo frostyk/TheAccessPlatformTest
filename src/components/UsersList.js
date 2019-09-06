@@ -12,7 +12,8 @@ const UsersList = props => (
         <Card
           title={`Ambassadors (${props.location.country.name}, ${
             props.location.region
-          })`} titleStyle={{fontSize: 16}}>
+          })`}
+          titleStyle={{fontSize: 16}}>
           {props.data.map(user => (
             <ListItem
               key={user.id}

@@ -17,7 +17,7 @@ it('should render Autocomplete with values', () => {
   );
   expect(wrapper).toMatchSnapshot();
 });
-it('should render Autocomplete with empty array', () => {
+it('should render Autocomplete with emptuuy array', () => {
   const wrapper = shallow(
     <Autocomplete
       data={[]}

@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import Autocomplete from '../components/Autocomplete';
 import {getVisiblePlaces} from '../redux/selectors/places';
 import UsersList from '../components/UsersList';
-import {startFetchingUsers} from '../redux/actions/users';
+import {setUser, startFetchingUsers} from '../redux/actions/users';
 import {selectUsers} from '../redux/selectors/users';
 import {setSearchCriteria, setSearchValue} from '../redux/actions/search';
 import {NavigationActions} from 'react-navigation';
@@ -28,6 +28,7 @@ export class HomeScreen extends React.Component {
       params: {},
       action: NavigationActions.navigate({routeName: 'Message'}),
     });
+    this.props.dispatch(setUser(user))
     this.props.navigation.dispatch(navigateAction);
   };
 
